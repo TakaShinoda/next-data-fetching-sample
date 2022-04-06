@@ -1,5 +1,4 @@
-import type { NextPage } from 'next'
-import { GetServerSideProps } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 
 const Ssr = ({ data }: any) => {
   return (

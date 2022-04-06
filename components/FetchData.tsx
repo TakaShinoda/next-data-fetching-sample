@@ -1,5 +1,6 @@
 // TODO: data fetch with swr
 import React, { useEffect, useState, VFC } from 'react'
+import Image from 'next/image'
 
 export const FetchData: VFC = () => {
   const [data, setData] = useState<any>(null)
@@ -25,10 +26,12 @@ export const FetchData: VFC = () => {
   return (
     <div>
       <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-        <img
-          className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
-          alt="mugiwara-pirates"
+        <Image
           src={data.img}
+          width={500}
+          height={500}
+          objectFit="contain"
+          alt="mugiwara-pirates"
         />
         <div className="text-center lg:w-2/3 w-full">
           <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">

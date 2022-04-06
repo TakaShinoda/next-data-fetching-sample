@@ -21,10 +21,17 @@ const Ssr = ({ data }: any) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch('http://localhost:3000/api/hello')
-  const data = await res.json()
-
-  return { props: { data } }
+  if (process.env.NODE_ENV === 'production') {
+    // 本番環境
+    const res = await fetch('http://localhost:3000/api/hello')
+    const data = await res.json()
+    return { props: { data } }
+  } else {
+    // 開発環境
+    const res = await fetch('http://localhost:3000/api/hello')
+    const data = await res.json()
+    return { props: { data } }
+  }
 }
 
 export default Ssr

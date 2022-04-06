@@ -8,7 +8,7 @@ type Data = {
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   // 日時設定
-  const date = new Date().toLocaleString({ timeZone: 'Asia/Tokyo' } as any)
+  const date = new Intl.DateTimeFormat('ja-JP', {year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", timeZone: "Asia/Tokyo"}).format(new Date())
 
   // 画像はランダムに返す
   let img = ''

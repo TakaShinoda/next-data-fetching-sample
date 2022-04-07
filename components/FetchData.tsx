@@ -9,7 +9,7 @@ export const FetchData: VFC = () => {
   useEffect(() => {
     setLoading(true)
     try {
-      fetch('api/mugiwara')
+      fetch('api/hello')
         .then((res) => res.json())
         .then((data) => {
           console.log(data)

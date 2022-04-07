@@ -34,13 +34,13 @@ export const getServerSideProps: GetServerSideProps = async () => {
   if (process.env.NODE_ENV === 'production') {
     // 本番環境
     const res = await fetch(
-      'https://next-data-fetching-sample.vercel.app/api/mugiwara'
+      'https://next-data-fetching-sample.vercel.app/api/hello'
     )
     const data = await res.json()
     return { props: { data } }
   } else {
     // 開発環境
-    const res = await fetch('http://localhost:3000/api/mugiwara')
+    const res = await fetch('http://localhost:3000/api/hello')
     const data = await res.json()
     return { props: { data } }
   }

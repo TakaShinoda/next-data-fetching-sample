@@ -1,17 +1,14 @@
 import { NextPage, NextPageContext } from 'next'
 import Error from 'next/error'
-
-type Props = {
+interface Props {
   statusCode?: number
 }
 
 const ErrorPage: NextPage<Props> = ({ statusCode }) => {
-  return (
-    <p>
-      {statusCode
-        ? `An error ${statusCode} occurred on server`
-        : 'An error occurred on client'}
-    </p>
+  return statusCode ? (
+    <Error statusCode={statusCode}></Error>
+  ) : (
+    <p>An error occurred on client</p>
   )
 }
 

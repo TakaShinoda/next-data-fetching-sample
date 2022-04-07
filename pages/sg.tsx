@@ -1,5 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
+import { fetchData } from '../lib/fetch-data'
 
 const Sg = ({ data }: any) => {
   return (
@@ -33,10 +34,11 @@ const Sg = ({ data }: any) => {
 export const getStaticProps: GetStaticProps = async () => {
   if (process.env.NODE_ENV === 'production') {
     // 本番環境
-    const res = await fetch(
-      'https://next-data-fetching-sample.vercel.app/api/hello'
-    )
-    const data = await res.json()
+    // const res = await fetch(
+    //   'https://next-data-fetching-sample.vercel.app/api/hello'
+    // )
+    // const data = await res.json()
+    const data = await fetchData()
     return { props: { data } }
   } else {
     // 開発環境

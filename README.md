@@ -1,4 +1,4 @@
-## next-data-fetching-sampley-app
+## next-data-fetching-sample-app
 
 - CSR, SSR, SG, ISR の動きを確認するサンプル
 

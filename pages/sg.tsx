@@ -1,4 +1,5 @@
 import type { GetStaticProps, NextPage } from 'next'
+import { fetchData } from '../lib/fetch-data'
 import Image from 'next/image'
 
 const Sg = ({ data }: any) => {
@@ -10,6 +11,7 @@ const Sg = ({ data }: any) => {
             日時：{data.date}
           </h1>
         </div>
+
         <Image
           src={data.img}
           width={500}
@@ -31,19 +33,18 @@ const Sg = ({ data }: any) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  if (process.env.NODE_ENV === 'production') {
-    // 本番環境
-    const res = await fetch(
-      'https://next-data-fetching-sample.vercel.app/api/mugiwara'
-    )
-    const data = await res.json()
-    return { props: { data } }
-  } else {
-    // 開発環境
-    const res = await fetch('http://localhost:3000/api/mugiwara')
-    const data = await res.json()
-    return { props: { data } }
-  }
+  // if (process.env.NODE_ENV === 'production') {
+  //   const data = await fetchData()
+  //   return { props: { data } }
+  // } else {
+  //   // 開発環境
+  //   const res = await fetch('http://localhost:3000/api/mugiwara')
+  //   const data = await res.json()
+  //   return { props: { data } }
+  // }
+
+  const data = await fetchData()
+  return { props: { data } }
 }
 
 export default Sg

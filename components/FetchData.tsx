@@ -12,7 +12,6 @@ export const FetchData: VFC = () => {
       fetch('api/hello')
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
           setData(data)
           setLoading(false)
         })
@@ -22,7 +21,7 @@ export const FetchData: VFC = () => {
   }, [])
 
   if (isLoading) return <p>Loading...</p>
-  if (!data) return <p>No profile data</p>
+  if (!data) return <p>No data</p>
 
   return (
     <div className="container mx-auto flex px-5 py-20 items-center justify-center flex-col">

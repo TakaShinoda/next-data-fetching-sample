@@ -1,8 +1,8 @@
 // TODO: data fetch with swr
-import React, { useEffect, useState, VFC } from 'react'
+import React, { useEffect, useState, FC } from 'react'
 import Image from 'next/image'
 
-export const FetchData: VFC = () => {
+export const FetchData: FC = () => {
   const [data, setData] = useState<any>(null)
   const [isLoading, setLoading] = useState(false)
 

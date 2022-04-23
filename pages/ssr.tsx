@@ -1,5 +1,6 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import Image from 'next/image'
+import { fetchData } from '../lib/fetch-data'
 
 const Ssr = ({ data }: any) => {
   return (
@@ -32,17 +33,21 @@ const Ssr = ({ data }: any) => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   if (process.env.NODE_ENV === 'production') {
-    // 本番環境
-    const res = await fetch(
-      'https://next-data-fetching-sample.vercel.app/api/hello'
-    )
-    const data = await res.json()
-    return { props: { data } }
+    const data = await fetchData()
+    return {
+      props: {
+        data,
+      },
+    }
   } else {
     // 開発環境
     const res = await fetch('http://localhost:3000/api/hello')
     const data = await res.json()
-    return { props: { data } }
+    return {
+      props: {
+        data,
+      },
+    }
   }
 }
 

@@ -4,6 +4,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	try {
 		// 再検証させるページの path を引数に渡す
 		await res.unstable_revalidate('/ondemandIsr')
+		await res.unstable_revalidate('/ondemandIsrTwo')
 		return res.json({ revalidate: true })
 	} catch(err) {
 		console.log(err)
